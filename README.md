@@ -1,18 +1,35 @@
 # FADN
-This repository contains an implementation of a convolution neural network for 3D object detection in the fusion of lidar point clouds and camera images As shown in the figure below, the model architecture consists of three major components: Frustum-Aware Generator, decorator, and detection network.
+This repository contains an implementation of a convolution neural network for 3D object detection in the fusion of lidar point clouds and camera images As shown in the figure below, the model architecture consists of three major components: Frustum-Aware Generator, decorator, and fussion-based detection network.
+![image](https://github.com/denyz/FADN/assets/18696187/1f4fb9e6-e055-4276-a3d4-da1eab007513)
+
+It is built upon pytorch-geometric and provides usage with the KITTI and nuScenes dataset.
 
 
-
-
-
-
-
-# Welcome to StackEdit!
+# Result
 
 Hi! I'm your first Markdown file in **StackEdit**. If you want to learn about StackEdit, you can read me. If you want to play with Markdown, you can edit me. Once you have finished with me, you can create new files by opening the **file explorer** on the left corner of the navigation bar.
 
 
-# Files
+# Prerequisites
+- OS: Ubuntu 20.04 LTS
+- CUDA: 11.3
+- cuDNN: 8
+- pytorch 1.10.0
+
+# Preparation
+To get started, first a project folder must be created. This folder contains everything related to this project. Inside the project folder create a "data" folder and within this folder, create a "results" subfolder. The trained models and evaluations will be stored in that folder. Depending on the desired dataset, create the following additional sub folders inside the "data" folder:
+
+datasets/radarscenes/raw
+datasets/nuscenes
+In a second step follow the instructions of the nuScenes and/or RadarScenes websites to download and store the datasets in the created sub folders.
+
+Finally, clone this repository into the project folder using the command:
+
+git clone https://github.com/TUMFTM/RadarGNN.git
+If you use the RadarScenes dataset, your folder structure should now look like this:
+
+
+
 
 StackEdit stores your files in your browser, which means all your files are automatically saved locally and are accessible **offline!**
 
