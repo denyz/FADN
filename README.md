@@ -11,7 +11,7 @@ Hi! I'm your first Markdown file in **StackEdit**. If you want to learn about St
 ### 3D Object Detection and Semantic Segmentation (on KITTI)
 | Model    | Invariance             | mAP      | F1       | Checkpoint                                                              |
 |----------|------------------------|----------|----------|-------------------------------------------------------------------------|
-| RadarGNN | None                   | 19.4     | 68.1     | [Link](https://zenodo.org/record/7822037/files/model_01.zip?download=1) |
+| FADN     | None                   | 19.4     | 68.1     | [Link](https://zenodo.org/record/7822037/files/model_01.zip?download=1) |
 | RadarGNN | Translation            | **56.5** | **77.1** | [Link](https://zenodo.org/record/7822037/files/model_02.zip?download=1) |
 | RadarGNN | Translation & Rotation | 19.6     | 76.5     | [Link](https://zenodo.org/record/7822037/files/model_03.zip?download=1) |
 
