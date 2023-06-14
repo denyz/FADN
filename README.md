@@ -25,9 +25,40 @@ In a second step follow the instructions of the nuScenes and/or RadarScenes webs
 
 Finally, clone this repository into the project folder using the command:
 
-git clone https://github.com/TUMFTM/RadarGNN.git
-If you use the RadarScenes dataset, your folder structure should now look like this:
+```
+git clone https://github.com/denyz/FADN.git
+```
 
+<details>
+<summary>If you use the KITTI dataset, your folder structure should now look like this: </summary>
+
+```
+.
+|  
++---detector/  
+|   |  
+|   +---data/  
+|   |   |  
+|   |   +---kitti/  
+|   |   |   |
+|   |   |   +---ImageSets/                
+|   |   |   |   |
+|   |   |   |   +---License.md
+|   |   |   |   |
+|   |   |   |   +---data/        
+|   |   |
+|   +---results/  
+| 
++---docs/
+|
++---configurations/
+|   
++---test/
+|
++---src/  
+|
++---...
+```
 
 
 
