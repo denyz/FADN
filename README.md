@@ -8,6 +8,15 @@ It is built upon pytorch-geometric and provides usage with the KITTI and nuScene
 # Result
 
 Hi! I'm your first Markdown file in **StackEdit**. If you want to learn about StackEdit, you can read me. If you want to play with Markdown, you can edit me. Once you have finished with me, you can create new files by opening the **file explorer** on the left corner of the navigation bar.
+### 3D Object Detection and Semantic Segmentation (on KITTI)
+| Model    | Invariance             | mAP      | F1       | Checkpoint                                                              |
+|----------|------------------------|----------|----------|-------------------------------------------------------------------------|
+| RadarGNN | None                   | 19.4     | 68.1     | [Link](https://zenodo.org/record/7822037/files/model_01.zip?download=1) |
+| RadarGNN | Translation            | **56.5** | **77.1** | [Link](https://zenodo.org/record/7822037/files/model_02.zip?download=1) |
+| RadarGNN | Translation & Rotation | 19.6     | 76.5     | [Link](https://zenodo.org/record/7822037/files/model_03.zip?download=1) |
+
+
+![image](https://github.com/denyz/FADN/assets/18696187/a431a2a8-7faa-46b6-b649-85e3cae15443)
 
 
 # Prerequisites
@@ -17,7 +26,7 @@ Hi! I'm your first Markdown file in **StackEdit**. If you want to learn about St
 - pytorch 1.10.0
 
 # Preparation
-To get started, first a project folder must be created. This folder contains everything related to this project. Inside the project folder create a "data" folder and within this folder, create a "results" subfolder. The trained models and evaluations will be stored in that folder. Depending on the desired dataset, create the following additional sub folders inside the "data" folder:
+Inside the project folder create a "data" folder and within this folder, create a "results" subfolder. The trained models and evaluations will be stored in that folder. Depending on the desired dataset, create the following additional sub folders inside the "data" folder:
 
 datasets/radarscenes/raw
 datasets/nuscenes
@@ -29,11 +38,15 @@ Finally, clone this repository into the project folder using the command:
 git clone https://github.com/denyz/FADN.git
 ```
 
+Create the PKL
+```
+python -m pcdet.datasets.kitti.kitti_dataset create_kitti_infos tools/cfgs/dataset_configs/kitti_dataset.yaml
+```
+
 <details>
 <summary>If you use the KITTI dataset, your folder structure should now look like this: </summary>
 
 ```
-.
 |  
 +---detector/  
 |   |  
@@ -41,22 +54,34 @@ git clone https://github.com/denyz/FADN.git
 |   |   |  
 |   |   +---kitti/  
 |   |   |   |
-|   |   |   +---ImageSets/                
-|   |   |   |   |
-|   |   |   |   +---License.md
-|   |   |   |   |
-|   |   |   |   +---data/        
+|   |   |   +---ImageSets/
+|   |   |   |	|   +---train.txt
+|   |   |   |	|   +---val.txt
+|   |   |   |	|   +---test.txt
+|   |   |   +---gt_database/
+|   |   |   +---trainning/
+|   |   |   |	|   +---calib/
+|   |   |   |   |   +---image_2
+|   |   |   |   |   +---image_3
+|   |   |   |   |   +---label_2
+|   |   |   |   |   +---planes
+|   |   |   |	|   +---velodyne
+|   |   |   +---testing/
+|   |   |   |   |   +---calib/
+|   |   |   |   |   +---image_2
+|   |   |   |   |   +---image_3
+|   |   |   |   |   +---planes
+|   |   |   |   |   +---velodyne
+|   |   |   |
+|   |   |   +---kitti_infos_test.pkl
+|   |   |   +---kitti_infos_train.pkl
+|   |   |   +---kitti_infos_trainval.pkl
 |   |   |
-|   +---results/  
+|   +---tools/  
 | 
-+---docs/
-|
-+---configurations/
-|   
-+---test/
-|
-+---src/  
-|
+.
+.
+.
 +---...
 ```
 
