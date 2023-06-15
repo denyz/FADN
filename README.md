@@ -123,7 +123,7 @@ arguments:
     --dataset   Path to the raw (RadarScenes/nuScenes) dataset.
     --config    parameter to the created decorated dataset.
 ```
-<br />
+<br>
 
 ### 2. Create and train a model
 Next step, you can use the created decorated dataset to train a model. To do this, run the following command: 
@@ -134,19 +134,18 @@ $ python train.py --cfg_file cfgs/kitti_models/FADN_decorated.yaml
 ```
 ```
 usage:             train.py [--data] [--results] [--config]
-<br />
-### 4. Evaluate a trained model 
-Finally, you can evaluate a trained model using the following command inside the docker container: 
-```
-python3 src/gnnradarobjectdetection/evaluate.py --data ${path_to_graph_dataset_folder}$ --model ${path_to_model_folder}$ --config ${path_to_config_file}$ 
-```
-```
-usage:             evaluate.py [--data] [--model] [--config]
+<br>
 
-arguments:
-    --data         Path to the created graph-dataset (The same as used for the training of the model to evaluate)
-    --model        Path to the folder in which the trained model is saved
-    --config       Path to the created configuration.yml file
+### 3. Evaluate a trained model 
+Finally, you can evaluate a trained model using the following command: 
 ```
-Within the provided "model" folder a new "evaluation" folder is created, in which the evaluation results are saved.
+ ./eval_detection_3d_offline [gt_dir] [result_dir]
+```
+The evaluation metrics include :    
+- overlap on image (AP)
+- oriented overlap on image (AOS)
+- overlap on ground-plane (AP)
+- overlap in 3D (AP)
+
+Within the provided "results" folder a new "data" and "plot" folder is created, in which the evaluation results are saved.
 
