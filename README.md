@@ -18,8 +18,8 @@ Results of our FADN model for 3D object detection on both the [KITTI](https://ww
 
 |  nuScenes Model  |     mAP       |    Car    |   Ped.  |    Bus   |   Bar. |     TC |   Tru. |  Tra.  | Moto   | C.V    | Bic.           
 |------------------|---------------|-----------|---------|----------|--------|--------|--------|--------|--------|--------|------|
-| FAD PointPillars |     35.7      |   72.7    |    66.9 |    31.8  |    44.6|  40.6  |  25.8  |  29.2  |  32.0  |   7.3  | 5.9  |
-|      FADN        |      72.09    |   89.1    |   89.9  |    73.2  |   79.6 |   89.5 |  62.1  |   65.3 |   77.5 |   36.1 | 58.6 |
+| FAD PointPillars |     35.7      |   72.7    |   66.9  |    31.8  |    44.6|  40.6  |  25.8  |  29.2  |  32.0  |   7.3  | 5.9  |
+|      FADN        |     72.09     |   89.1    |   89.9  |    73.2  |   79.6 |  89.5  |  62.1  |  65.3  |  77.5  |   36.1 | 58.6 |
 
 
 
@@ -55,7 +55,7 @@ python -m pcdet.datasets.kitti.kitti_dataset create_kitti_infos tools/cfgs/datas
 
 ```
 |  
-+---detector/  
++---FADN/  
 |   |  
 |   +---data/  
 |   |   |  
@@ -73,6 +73,7 @@ python -m pcdet.datasets.kitti.kitti_dataset create_kitti_infos tools/cfgs/datas
 |   |   |   |   |   +---label_2
 |   |   |   |   |   +---planes
 |   |   |   |	|   +---velodyne
+|   |   |   |	|   +---decorated_lidar
 |   |   |   +---testing/
 |   |   |   |   |   +---calib/
 |   |   |   |   |   +---image_2
@@ -104,47 +105,35 @@ $ python setup.py develop
 ##  Usage
 The overall pipeline is divided into three major steps. 
 
-- Creation of a graph-dataset from the raw RadarScenes or nuScenes dataset
-- Creation and training of a model based on the created graph-dataset
+- Creation of a decorated dataset from the raw KITTI or nuScenes dataset
+- Creation and training of a model based on the created decorated dataset
 - Evaluation of the trained model
 
 The settings of all three steps are defined in a unified configuration file, which must consequently be created first.
-### 1. Create a configuration file 
-The configuration file contains three sections with relevant settings for the corresponding steps (dataset creation, training, evaluation). It can be created based on the provided [configuration description](/configurations/configuration_description.yml) and [configuration template](/configurations/configuration_template.yml).
-<br />
-
-### 2. Create a graph-dataset
-Next, the graph-dataset needs to be created by converting the radar point clouds of the raw datasets to a graph data structure. To do this, execute the following command inside the docker container: 
+### 1. Create a decorated dataset
+the decorated dataset needs to be created by converting the lidar point clouds of the raw datasets to a decorated data structure. The will generate the decorated_lidar folder in the dataset. To do this, execute the following command inside the docker container: 
 ```
-python3 src/gnnradarobjectdetection/create_dataset.py --dataset ${path_to_raw_dataset_folder}$ --config ${path_to_config_file}$
+$ cd FADN
+$ python decorating.py
 ```
-
 ```
-usage:          create_dataset.py [--dataset] [--config]
+usage:          decorating.py [--dataset] [--config]
 
 arguments:
-    --dataset   Path to the raw (RadarScenes/nuScenes) dataset
-    --config    Path to the created configuration.yml file
+    --dataset   Path to the raw (RadarScenes/nuScenes) dataset.
+    --config    parameter to the created decorated dataset.
 ```
-
-The created graph-dataset is saved in the automatically created folder "{path_to_dataset}/processed". After creating the graph-dataset, this folder may be renamed.
 <br />
 
-### 3. Create and train a model
-In a next step, you can use the created graph-dataset to train a model. To do this, run the following command inside the docker container: 
+### 2. Create and train a model
+Next step, you can use the created decorated dataset to train a model. To do this, run the following command: 
 ```
-python3 src/gnnradarobjectdetection/train.py --data ${path_to_graph_dataset_folder}$ --results ${path_to_results_folder}$ --config ${path_to_config_file}$
+$ python -m pcdet.datasets.kitti.decorate_kitti_dataset create_kitti_infos tools/cfgs/dataset_configs/decorate_kitti_dataset.yaml
+$ cd tools
+$ python train.py --cfg_file cfgs/kitti_models/FADN_decorated.yaml
 ```
 ```
 usage:             train.py [--data] [--results] [--config]
-
-arguments:
-    --data         Path to the created graph-dataset
-    --results      Path to the created "results" folder
-    --config       Path to the created configuration.yml file
-```
-
-Within the provided "results" folder, a new "model" folder is automatically created, in which the trained model is saved.
 <br />
 ### 4. Evaluate a trained model 
 Finally, you can evaluate a trained model using the following command inside the docker container: 
