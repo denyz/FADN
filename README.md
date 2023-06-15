@@ -33,9 +33,10 @@ Results of our FADN model for 3D object detection on both the [KITTI](https://ww
 
 # Preparation
 Inside the project folder create a "FADN/data" folder and within this folder, create a "data/output" subfolder. The trained models and evaluations will be stored in that folder. Depending on the desired dataset, create the following additional subfolders inside the "data" folder:
-
+```
 datasets/kitti/
 datasets/nuscenes/
+```
 In a second step follow the instructions of the KITTI and nuScenes websites to download and store the datasets in the created subfolders.
 
 Finally, clone this repository into the project folder using the command:
