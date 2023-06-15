@@ -7,7 +7,7 @@ It is built upon pytorch-geometric and provides usage with the KITTI and nuScene
 
 # Result
 
-Hi! I'm your first Markdown file in **StackEdit**. If you want to learn about StackEdit, you can read me. If you want to play with Markdown, you can edit me. Once you have finished with me, you can create new files by opening the **file explorer** on the left corner of the navigation bar.
+Results of our FADN model for 3D object detection on both the [KITTI](https://www.cvlibs.net/datasets/kitti/) and the [nuScenes](https://www.nuscenes.org/) dataset. 
 ### 3D Object Detection in KITTI and nuScenes
 |  KITTI Model  |     mAP       |    Car    |   Pedestrian     | Cyclist  |      
 |---------------|---------------|-----------|------------------|----------|
