@@ -16,7 +16,7 @@ Hi! I'm your first Markdown file in **StackEdit**. If you want to learn about St
 
 <br>
 
-|  nuScenes Model  |     mAP       |    Car    |   Ped   |    Bus   |   Bar. |     TC |   Tru. |  Tra.  | Moto   | C.V    | Bic.           
+|  nuScenes Model  |     mAP       |    Car    |   Ped.  |    Bus   |   Bar. |     TC |   Tru. |  Tra.  | Moto   | C.V    | Bic.           
 |------------------|---------------|-----------|---------|----------|--------|--------|--------|--------|--------|--------|------|
 | FAD PointPillars |     35.7      |   72.7    |    66.9 |    31.8  |    44.6|  40.6  |  25.8  |  29.2  |  32.0  |   7.3  | 5.9  |
 |      FADN        |      72.09    |   89.1    |   89.9  |    73.2  |   79.6 |   89.5 |  62.1  |   65.3 |   77.5 |   36.1 | 58.6 |
