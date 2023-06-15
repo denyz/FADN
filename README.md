@@ -128,6 +128,7 @@ Next step, you can use the created decorated dataset to train a model. To do thi
 ```
 $ python -m pcdet.datasets.kitti.decorate_kitti_dataset create_kitti_infos tools/cfgs/dataset_configs/decorate_kitti_dataset.yaml
 $ cd tools
+```
 
 ```
 usage:   train.py [--data] [--results] [--config]
