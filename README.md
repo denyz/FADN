@@ -2,8 +2,8 @@
 This repository contains an implementation of a convolution neural network for 3D object detection in the fusion of lidar point clouds and camera images. As shown in the figure below, the model architecture consists of three major components: frustum-aware generator, decorator, and fusion-based detection network.
 ![image](https://github.com/denyz/FADN/assets/18696187/1f4fb9e6-e055-4276-a3d4-da1eab007513)
 
-It is built upon pytorch-geometric and provides usage with the KITTI and nuScenes dataset.
-
+__Note: It is built upon pytorch-geometric and provides usage with the KITTI and nuScenes dataset._
+<br>
 
 # Result
 Results of our FADN model for 3D object detection on both the [KITTI](https://www.cvlibs.net/datasets/kitti/) and the [nuScenes](https://www.nuscenes.org/) dataset. 
@@ -91,7 +91,7 @@ git clone https://github.com/denyz/FADN.git
 <br>
 
 ## Install
-FADN is an open-source LiDAR-camera fusion 3D detection framework. It supports many popular datasets like Kitti and nuscenes. To install the FADN please first install its requirements.txt. And as we modify some parts of the OpenPCDet LIB to support the decorated Kitti dataset. To install it, run the following commands.
+FADN is a LiDAR-camera fusion 3D detection framework. It supports many popular datasets like KITTI and nuscenes. To install the FADN please first install its requirements.txt. And as we modify some parts of the OpenPCDet LIB to support the decorated Kitti dataset. To install it, run the following commands.
 
 ```
 $ cd FADN/detector
@@ -117,7 +117,7 @@ usage:          decorating.py [--dataset] [--config]
 
 arguments:
     --dataset   Path to the raw (RadarScenes/nuScenes) dataset.
-    --config    parameter to the created decorated dataset.
+    --config  Parameters to the created decorated dataset.
 ```
 
 Create the KITTI PKL
