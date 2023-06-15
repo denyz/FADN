@@ -1,12 +1,11 @@
 # FADN
-This repository contains an implementation of a convolution neural network for 3D object detection in the fusion of lidar point clouds and camera images As shown in the figure below, the model architecture consists of three major components: Frustum-Aware Generator, decorator, and fussion-based detection network.
+This repository contains an implementation of a convolution neural network for 3D object detection in the fusion of lidar point clouds and camera images. As shown in the figure below, the model architecture consists of three major components: frustum-aware generator, decorator, and fusion-based detection network.
 ![image](https://github.com/denyz/FADN/assets/18696187/1f4fb9e6-e055-4276-a3d4-da1eab007513)
 
 It is built upon pytorch-geometric and provides usage with the KITTI and nuScenes dataset.
 
 
 # Result
-
 Results of our FADN model for 3D object detection on both the [KITTI](https://www.cvlibs.net/datasets/kitti/) and the [nuScenes](https://www.nuscenes.org/) dataset. 
 ### 3D Object Detection in KITTI and nuScenes
 |  KITTI Model  |     mAP       |    Car    |   Pedestrian     | Cyclist  |      
@@ -16,7 +15,7 @@ Results of our FADN model for 3D object detection on both the [KITTI](https://ww
 
 <br>
 
-|  nuScenes Model  |     mAP       |    Car    |   Ped.  |    Bus   |   Bar. |     TC |   Tru. |  Tra.  | Moto   | C.V    | Bic.           
+|  nuScenes Model  |     mAP       |    Car    |   Ped.  |    Bus   |   Bar. |     TC |   Tru. |  Tra.  | Moto   | C.V    | Bic. |         
 |------------------|---------------|-----------|---------|----------|--------|--------|--------|--------|--------|--------|------|
 | FAD PointPillars |     35.7      |   72.7    |   66.9  |    31.8  |    44.6|  40.6  |  25.8  |  29.2  |  32.0  |   7.3  | 5.9  |
 |      FADN        |     72.09     |   89.1    |   89.9  |    73.2  |   79.6 |  89.5  |  62.1  |  65.3  |  77.5  |   36.1 | 58.6 |
@@ -33,21 +32,16 @@ Results of our FADN model for 3D object detection on both the [KITTI](https://ww
 - pytorch 1.10.0
 
 # Preparation
-Inside the project folder create a "detector/data" folder and within this folder, create a "detector/output" subfolder. The trained models and evaluations will be stored in that folder. Depending on the desired dataset, create the following additional subfolders inside the "data" folder:
+Inside the project folder create a "FADN/data" folder and within this folder, create a "data/output" subfolder. The trained models and evaluations will be stored in that folder. Depending on the desired dataset, create the following additional subfolders inside the "data" folder:
 
-datasets/radarscenes/raw
-datasets/nuscenes
-In a second step follow the instructions of the nuScenes and/or RadarScenes websites to download and store the datasets in the created sub folders.
+datasets/kitti/
+datasets/nuscenes/
+In a second step follow the instructions of the kitti and nuScenes websites to download and store the datasets in the created sub folders.
 
 Finally, clone this repository into the project folder using the command:
 
 ```
 git clone https://github.com/denyz/FADN.git
-```
-
-Create the PKL
-```
-python -m pcdet.datasets.kitti.kitti_dataset create_kitti_infos tools/cfgs/dataset_configs/kitti_dataset.yaml
 ```
 
 <details>
@@ -123,6 +117,12 @@ arguments:
     --dataset   Path to the raw (RadarScenes/nuScenes) dataset.
     --config    parameter to the created decorated dataset.
 ```
+
+Create the KITTI PKL
+```
+python -m pcdet.datasets.kitti.kitti_dataset create_kitti_infos tools/cfgs/dataset_configs/decorate_kitti_dataset.yaml
+```
+
 <br>
 
 ### 2. Create and train a model
@@ -130,16 +130,15 @@ Next step, you can use the created decorated dataset to train a model. To do thi
 ```
 $ python -m pcdet.datasets.kitti.decorate_kitti_dataset create_kitti_infos tools/cfgs/dataset_configs/decorate_kitti_dataset.yaml
 $ cd tools
+usage:     train.py [--data] [--results] [--config]
 $ python train.py --cfg_file cfgs/kitti_models/FADN_decorated.yaml
 ```
-```
-usage:             train.py [--data] [--results] [--config]
 <br>
 
-### 3. Evaluate a trained model 
-Finally, you can evaluate a trained model using the following command: 
+### 3. Evaluate a KITTI trained model 
+Finally, you can evaluate a trained model using the following command:
 ```
- ./eval_detection_3d_offline [gt_dir] [result_dir]
+usage:   ./eval_detection_3d_offline [gt_dir] [result_dir]
 ```
 The evaluation metrics include :    
 - overlap on image (AP)
