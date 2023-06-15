@@ -9,11 +9,11 @@ It is built upon pytorch-geometric and provides usage with the KITTI and nuScene
 
 Hi! I'm your first Markdown file in **StackEdit**. If you want to learn about StackEdit, you can read me. If you want to play with Markdown, you can edit me. Once you have finished with me, you can create new files by opening the **file explorer** on the left corner of the navigation bar.
 ### 3D Object Detection in KITTI and nuScenes
-| Model    | Invariance             | mAP      | F1       | Checkpoint                                                              |
-|----------|------------------------|----------|----------|-------------------------------------------------------------------------|
-| FADN     | None                   | 19.4     | 68.1     | [Link](https://zenodo.org/record/7822037/files/model_01.zip?download=1) |
-| RadarGNN | Translation            | **56.5** | **77.1** | [Link](https://zenodo.org/record/7822037/files/model_02.zip?download=1) |
-| RadarGNN | Translation & Rotation | 19.6     | 76.5     | [Link](https://zenodo.org/record/7822037/files/model_03.zip?download=1) |
+|   Model       |     mAP       |    Car    |   Pedestrian     | Cyclist  |      
+|---------------|---------------|-----------|------------------|----------|
+|FAD PV-RCNN    |      66.56    |   83.88   |      48.47       |   69.42  |
+|    FADN       |      71.49    |   86.33   |      50.82       |   77.33  |
+
 
 
 ![image](https://github.com/denyz/FADN/assets/18696187/a431a2a8-7faa-46b6-b649-85e3cae15443)
