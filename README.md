@@ -36,7 +36,7 @@ Inside the project folder create a "FADN/data" folder and within this folder, cr
 
 datasets/kitti/
 datasets/nuscenes/
-In a second step follow the instructions of the kitti and nuScenes websites to download and store the datasets in the created sub folders.
+In a second step follow the instructions of the KITTI and nuScenes websites to download and store the datasets in the created subfolders.
 
 Finally, clone this repository into the project folder using the command:
 
@@ -105,7 +105,7 @@ The overall pipeline is divided into three major steps.
 
 The settings of all three steps are defined in a unified configuration file, which must consequently be created first.
 ### 1. Create a decorated dataset
-the decorated dataset needs to be created by converting the lidar point clouds of the raw datasets to a decorated data structure. The will generate the decorated_lidar folder in the dataset. To do this, execute the following command inside the docker container: 
+the decorated dataset needs to be created by converting the lidar point clouds of the raw datasets to a decorated data structure. This will generate the decorated_lidar folder in the dataset. To do this, execute the following command inside the docker container: 
 ```
 $ cd FADN
 $ python decorating.py
@@ -141,10 +141,10 @@ Finally, you can evaluate a trained model using the following command:
 usage:   ./eval_detection_3d_offline [gt_dir] [result_dir]
 ```
 The evaluation metrics include :    
-- overlap on image (AP)
-- oriented overlap on image (AOS)
-- overlap on ground-plane (AP)
-- overlap in 3D (AP)
+- Overlap on image (AP)
+- Oriented overlap on image (AOS)
+- Overlap on ground-plane (AP)
+- Overlap in 3D (AP)
 
 Within the provided "results" folder a new "data" and "plot" folder is created, in which the evaluation results are saved.
 
