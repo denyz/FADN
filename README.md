@@ -84,6 +84,8 @@ python -m pcdet.datasets.kitti.kitti_dataset create_kitti_infos tools/cfgs/datas
 .
 +---...
 ```
+</details>
+<br>
 
 ##  Usage
 The overall pipeline is divided into three major steps. 
