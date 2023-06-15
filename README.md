@@ -133,11 +133,11 @@ $ cd tools
 
 ```
 usage:   train.py [--data] [--results] [--config]
-$ python train.py --cfg_file cfgs/kitti_models/FADN_decorated.yaml
+$ python tools/train.py --cfg_file cfgs/kitti_models/FADN_decorated.yaml
 ```
 
 ### 3. Evaluate a KITTI trained model 
-Finally, you can evaluate a trained model using the following command:
+Finally, you can evaluate a trained model using the following command in **kittiEval**:
 ```
 usage:   ./eval_detection_3d_offline [gt_dir] [result_dir]
 ```
