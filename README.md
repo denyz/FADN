@@ -33,7 +33,7 @@ Results of our FADN model for 3D object detection on both the [KITTI](https://ww
 - pytorch 1.10.0
 
 # Preparation
-Inside the project folder create a "data" folder and within this folder, create a "results" subfolder. The trained models and evaluations will be stored in that folder. Depending on the desired dataset, create the following additional sub folders inside the "data" folder:
+Inside the project folder create a "detector/data" folder and within this folder, create a "detector/output" subfolder. The trained models and evaluations will be stored in that folder. Depending on the desired dataset, create the following additional subfolders inside the "data" folder:
 
 datasets/radarscenes/raw
 datasets/nuscenes
@@ -93,6 +93,13 @@ python -m pcdet.datasets.kitti.kitti_dataset create_kitti_infos tools/cfgs/datas
 ```
 </details>
 <br>
+##Install
+FADN is an open-source LiDAR-camera fusion 3D detection framework. It supports many popular datasets like Kitti and nuscenes. To install the FADN please first install its requirements.txt. And as we modify some parts of the OpenPCDet LIB to support the decorated Kitti dataset. To install it, run the following commands.
+
+```
+$ cd FADN/detector
+$ python setup.py develop
+```
 
 ##  Usage
 The overall pipeline is divided into three major steps. 
@@ -139,5 +146,18 @@ arguments:
 
 Within the provided "results" folder, a new "model" folder is automatically created, in which the trained model is saved.
 <br />
+### 4. Evaluate a trained model 
+Finally, you can evaluate a trained model using the following command inside the docker container: 
+```
+python3 src/gnnradarobjectdetection/evaluate.py --data ${path_to_graph_dataset_folder}$ --model ${path_to_model_folder}$ --config ${path_to_config_file}$ 
+```
+```
+usage:             evaluate.py [--data] [--model] [--config]
 
+arguments:
+    --data         Path to the created graph-dataset (The same as used for the training of the model to evaluate)
+    --model        Path to the folder in which the trained model is saved
+    --config       Path to the created configuration.yml file
+```
+Within the provided "model" folder a new "evaluation" folder is created, in which the evaluation results are saved.
 
