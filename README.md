@@ -123,17 +123,16 @@ Create the KITTI PKL
 python -m pcdet.datasets.kitti.kitti_dataset create_kitti_infos tools/cfgs/dataset_configs/decorate_kitti_dataset.yaml
 ```
 
-<br>
-
 ### 2. Create and train a model
 Next step, you can use the created decorated dataset to train a model. To do this, run the following command: 
 ```
 $ python -m pcdet.datasets.kitti.decorate_kitti_dataset create_kitti_infos tools/cfgs/dataset_configs/decorate_kitti_dataset.yaml
 $ cd tools
-usage:     train.py [--data] [--results] [--config]
+
+```
+usage:   train.py [--data] [--results] [--config]
 $ python train.py --cfg_file cfgs/kitti_models/FADN_decorated.yaml
 ```
-<br>
 
 ### 3. Evaluate a KITTI trained model 
 Finally, you can evaluate a trained model using the following command:
