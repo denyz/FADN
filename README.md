@@ -94,7 +94,6 @@ git clone https://github.com/denyz/FADN.git
 FADN is a LiDAR-camera fusion 3D detection framework. It supports many popular datasets like KITTI and nuscenes. To install the FADN please first install its requirements.txt. And as we modify some parts of the OpenPCDet LIB to support the decorated Kitti dataset. To install it, run the following commands.
 
 ```
-$ cd FADN/detector
 $ python setup.py develop
 ```
 
