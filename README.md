@@ -109,7 +109,7 @@ The settings of all three steps are defined in a unified configuration file, whi
 the decorated dataset needs to be created by converting the lidar point clouds of the raw datasets to a decorated data structure. This will generate the decorated_lidar folder in the dataset. To do this, execute the following command inside the docker container: 
 ```
 $ cd FADN
-$ python decorating.py
+$ python tools/decorating.py
 ```
 ```
 usage:          decorating.py [--dataset] [--config]
