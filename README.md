@@ -9,10 +9,17 @@ It is built upon pytorch-geometric and provides usage with the KITTI and nuScene
 
 Hi! I'm your first Markdown file in **StackEdit**. If you want to learn about StackEdit, you can read me. If you want to play with Markdown, you can edit me. Once you have finished with me, you can create new files by opening the **file explorer** on the left corner of the navigation bar.
 ### 3D Object Detection in KITTI and nuScenes
-|   Model       |     mAP       |    Car    |   Pedestrian     | Cyclist  |      
+|  KITTI Model  |     mAP       |    Car    |   Pedestrian     | Cyclist  |      
 |---------------|---------------|-----------|------------------|----------|
-|FAD PV-RCNN    |      66.56    |   83.88   |      48.47       |   69.42  |
+| FAD PV-RCNN   |      66.56    |   83.88   |      48.47       |   69.42  |
 |    FADN       |      71.49    |   86.33   |      50.82       |   77.33  |
+
+<br>
+
+|  nuScenes Model  |     mAP       |    Car    |   Ped   |    Bus   |   Bar. |     TC |   Tru. |  Tra.  | Moto   | C.V    | Bic.           
+|------------------|---------------|-----------|---------|----------|--------|--------|--------|--------|--------|--------|------|
+| FAD PointPillars |     35.7      |   72.7    |    66.9 |    31.8  |    44.6|  40.6  |  25.8  |  29.2  |  32.0  |   7.3  | 5.9  |
+|      FADN        |      72.09    |   89.1    |   89.9  |    73.2  |   79.6 |   89.5 |  62.1  |   65.3 |   77.5 |   36.1 | 58.6 |
 
 
 
